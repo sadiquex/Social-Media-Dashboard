@@ -1,20 +1,22 @@
 import styled from "styled-components";
 import React from "react";
 import { CardData } from "./CardData";
+import upArrow from "../images/icon-up.svg";
+import { motion } from "framer-motion";
 
 const SocialMediaCards = () => {
   return (
     <Container>
-      {CardData.map((item) => (
-        <Card>
+      {CardData.map((item, index) => (
+        <Card key={index}>
           <Handle>
-            <img src={item.icon} className="icon" />
+            <img src={item.icon} alt="icon image" className="icon" />
             <div className="name">{item.handle}</div>
           </Handle>
           <Followers>{item.followers}</Followers>
           <Crowd>{item.crowd}</Crowd>
           <Today>
-            <img src="../images/icon-up.svg" alt="" />
+            <img src={upArrow} alt="" />
             {item.today}
           </Today>
         </Card>
@@ -24,16 +26,21 @@ const SocialMediaCards = () => {
 };
 
 export default SocialMediaCards;
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   gap: 20px;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  @media screen and (max-width: 375px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 `;
 
-const Card = styled.div`
+const Card = styled(motion.div)`
   padding: 20px;
-  background: hsl(228, 28%, 20%);
+  background: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.text};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,11 +52,11 @@ const Card = styled.div`
   white-space: nowrap;
   &:hover {
     /* background: hsl(228, 34%, 66%); */
-    filter: brightness(150%);
+    filter: brightness(90%);
   }
 `;
 
-export const Handle = styled.p`
+export const Handle = styled.div`
   display: flex;
   align-items: center;
   .icon {
@@ -70,4 +77,6 @@ export const Today = styled.p`
   font-size: 12px;
   font-weight: 600;
   color: hsl(163, 72%, 41%);
+  display: flex;
+  align-items: center;
 `;

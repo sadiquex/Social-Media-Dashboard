@@ -1,21 +1,22 @@
-import React from "react";
 import styled from "styled-components";
+import { useState, React } from "react";
 
 const Heading = () => {
   // change theme
+  const [isOn, setIsOn] = useState(false);
 
   return (
     <Container>
-      <headingText>
+      <HeadingText>
         <Title className="title">Social Media Dashboard</Title>
         <TotalFollowers className="total-followers">
           Total Followers: 23,004
         </TotalFollowers>
-      </headingText>
+      </HeadingText>
       <SwitchMode>
         <ModeText>Dark Mode</ModeText>
         <Button>
-          <SwitchDot />
+          <SwitchDot onClick={() => setIsOn(!isOn)} isOn={isOn} />
         </Button>
       </SwitchMode>
     </Container>
@@ -28,9 +29,13 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px;
+
+  @media screen and (max-width: 375px) {
+    flex-direction: column;
+  }
 `;
 
-export const headingText = styled.p``;
+export const HeadingText = styled.p``;
 export const Title = styled.p`
   font-size: 30px;
   font-weight: 600;
@@ -40,6 +45,7 @@ export const SwitchMode = styled.div`
   border: 2px solid red;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 export const Button = styled.div`
   background: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
@@ -57,7 +63,6 @@ export const SwitchDot = styled.div`
   width: 20px;
   height: 20px;
   position: absolute;
-  /* top: 0; */
-  left: 0;
+  left: ${({ isOn }) => (isOn ? "20px" : "0%")};
 `;
 export const ModeText = styled.p``;

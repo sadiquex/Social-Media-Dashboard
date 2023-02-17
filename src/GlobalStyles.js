@@ -48,8 +48,8 @@ table {
 }
 
 .App {
-	height: 100vh;
-	width: 100%;
+	height: 100%;
+	/* width: 100%; */
 	color: #fff;
 	background: hsl(230, 17%, 14%);
 	display: flex;
