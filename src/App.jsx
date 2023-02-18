@@ -3,18 +3,26 @@ import Overview from "./components/Overview";
 import SocialMediaCards from "./components/SocialMediaCards";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import styled from "styled-components";
 import ThemeBtn from "./components/ThemeBtn";
+import {
+  AppContainer,
+  SocialMedia,
+  SwitchMode,
+  TopSection,
+  TotalFollowers,
+} from "./AppStyles";
 function App() {
   // theme
   const themeColours = {
     dark: {
       primary: "hsl(228, 28%, 20%);",
       text: "#fff",
+      mainBg: "hsl(230, 17%, 14%)",
     },
     light: {
-      primary: "#fff",
+      primary: "hsl(227, 47%, 96%)",
       text: "hsl(228, 28%, 20%);",
+      mainBg: "hsl(0, 0%, 100%)",
     },
   };
 
@@ -33,43 +41,25 @@ function App() {
 
   return (
     <ThemeProvider theme={isDarkTheme ? themeColours.dark : themeColours.light}>
-      <div className="App">
-        <div className="container">
-          <TopSection>
-            <div>
-              <SocialMedia>Social Media Dashboard</SocialMedia>
-              <TotalFollowers>Total followers:23,004</TotalFollowers>
-            </div>
-            <SwitchMode>
-              <p>{modeText}</p>
-              <ThemeBtn toggleTheme={toggleTheme} />
-            </SwitchMode>
-          </TopSection>
-          <SocialMediaCards />
-          <Overview />
+      <AppContainer>
+        <div className="App">
+          <div className="container">
+            <TopSection>
+              <div>
+                <SocialMedia>Social Media Dashboard</SocialMedia>
+                <TotalFollowers>Total followers:23,004</TotalFollowers>
+              </div>
+              <SwitchMode>
+                <p>{modeText}</p>
+                <ThemeBtn toggleTheme={toggleTheme} />
+              </SwitchMode>
+            </TopSection>
+            <SocialMediaCards />
+            <Overview />
+          </div>
         </div>
-      </div>
+      </AppContainer>
     </ThemeProvider>
   );
 }
 export default App;
-
-export const TopSection = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-  @media screen and (max-width: 375px) {
-    flex-direction: column;
-  }
-`;
-
-export const SocialMedia = styled.p`
-  font-size: 30px;
-  font-weight: 600;
-`;
-export const TotalFollowers = styled.p``;
-export const SwitchMode = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;

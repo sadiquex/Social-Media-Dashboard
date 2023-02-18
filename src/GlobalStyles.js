@@ -21,7 +21,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: "Ubuntu";
+	font-family: "Inter";
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -47,7 +47,8 @@ table {
 	border-spacing: 0;
 }
 
-.App {
+/* .App { */
+.Apps {
 	height: 100%;
 	/* width: 100%; */
 	color: #fff;
@@ -55,10 +56,11 @@ table {
 	display: flex;
 	justify-content: center;
 
+
 	.container {
 		max-width: 1440px;
 		width: 100%;
-		border: 2px solid green;
+		/* border: 2px solid green; */
 	}
 
 }

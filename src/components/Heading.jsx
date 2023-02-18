@@ -13,6 +13,7 @@ const Heading = () => {
           Total Followers: 23,004
         </TotalFollowers>
       </HeadingText>
+      <Line />
       <SwitchMode>
         <ModeText>Dark Mode</ModeText>
         <Button>
@@ -35,9 +36,17 @@ export const Container = styled.div`
   }
 `;
 
+export const Line = styled.div`
+  height: 10px;
+  width: 100px;
+  background: red;
+  border: 2px solid red;
+`;
+
 export const HeadingText = styled.p``;
 export const Title = styled.p`
-  font-size: 30px;
+  font-size: 14px;
+  /* font-size: 30px; */
   font-weight: 600;
 `;
 export const TotalFollowers = styled.p``;
